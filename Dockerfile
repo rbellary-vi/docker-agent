@@ -24,7 +24,8 @@ RUN pip2.7 install docker-py netuitive configobj simplejson pyutmp setproctitle 
 RUN mkdir /tmp/n && cd /tmp/n && git clone https://github.com/Netuitive/Diamond.git && cd /tmp/n/Diamond && python2.7 setup.py install && rm -rf /etc/diamond/diamond.conf.example* && rm -rf /etc/init.d/diamond && find /usr/local/share/diamond/collectors/  -type f -name "*.py" -print0 | xargs -0 sed -i 's/\/proc/\/host_proc/g'
 
 # install Netuitive Diamond Handler
-RUN cd /tmp/n && git clone https://github.com/Netuitive/omnibus-netuitive-agent.git && cp /tmp/n/omnibus-netuitive-agent/netuitive/src/handler/netuitive_cloud.py /usr/local/lib/python2.7/site-packages/diamond/handler/ && cp /usr/local/lib/python2.7/site-packages/diamond/utils/log.py /usr/local/lib/python2.7/site-packages/diamond/utils/log.py.tpl && mkdir -p /opt/netuitive-agent && echo 'netuitive-docker-agent 0.0.1 1' > /opt/netuitive-agent/version-manifest.txt && echo '' >> /opt/netuitive-agent/version-manifest.txt && mkdir -p /usr/local/share/diamond/collectors/netuitive
+RUN cd /tmp/n && git clone https://github.com/Netuitive/omnibus-netuitive-agent.git && cp /tmp/n/omnibus-netuitive-agent/netuitive/src/handler/netuitive_cloud.py /usr/local/lib/python2.7/site-packages/diamond/handler/ && cp /usr/local/lib/python2.7/site-packages/diamond/utils/log.py /usr/local/lib/python2.7/site-packages/diamond/utils/log.py.tpl && mkdir -p /opt/netuitive-agent && mkdir -p /usr/local/share/diamond/collectors/netuitive
+ADD version-manifest.txt /opt/netuitive-agent/version-manifest.txt
 ADD netuitive_docker.py /usr/local/share/diamond/collectors/netuitive/
 ADD netuitive-agent.conf /etc/diamond/netuitive-agent.conf.tpl
 
