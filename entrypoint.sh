@@ -2,7 +2,7 @@
 set -e
 echo "=> Configuring Netuitive Agent"
 
-cat /etc/diamond/netuitive-agent.conf.tpl|sed -e "s/INFO/${LOGLEVEL}/g"|sed -e "s/interval\ =\ 60/interval\ =\ ${INTERVAL}/g"|sed -e "s/<custom\ datasource\ api\ key>/${APIKEY}/g"|sed -e "s/api\.app\.netuitive\.com/${APIHOST}/g"|sed -e "s/# hostname = my_custom_hostname/hostname = ${DOCKER_HOSTNAME}/g" > /etc/diamond/netuitive-agent.conf
+cat /etc/diamond/netuitive-agent.conf.tpl|sed -e "s/https/${HTTPVAR}/g"|sed -e "s/INFO/${LOGLEVEL}/g"|sed -e "s/interval\ =\ 60/interval\ =\ ${INTERVAL}/g"|sed -e "s/<custom\ datasource\ api\ key>/${APIKEY}/g"|sed -e "s/api\.app\.netuitive\.com/${APIHOST}/g"|sed -e "s/# hostname = my_custom_hostname/hostname = ${DOCKER_HOSTNAME}/g" > /etc/diamond/netuitive-agent.conf
 
 chmod 644 /etc/diamond/netuitive-agent.conf
 
