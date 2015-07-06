@@ -10,6 +10,7 @@ ENV APIHOST api.app.netuitive.com
 ENV INTERVAL 60
 ENV DOCKER_HOSTNAME docker-hostname
 ENV LOGLEVEL WARN
+ENV HTTPVAR https
 
 # install updates and build tools
 RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm && yum -y update && yum -y groupinstall 'development tools' && yum -y install zlib-dev openssl-devel sqlite-devel bzip2-devel xz-libs wget tar
