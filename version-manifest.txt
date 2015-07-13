@@ -1,1 +1,1 @@
-netuitive-docker-agent 0.1.3 build
+netuitive-docker-agent 0.1.4 build
