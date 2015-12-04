@@ -1,6 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version 0.2.1 - Dec 3 2015
+---------------------------
+- updated to the latest version of the agent
+
 Version 0.1.8 - Nov 6 2015
 ---------------------------
 - updated to the latest version of the agent
