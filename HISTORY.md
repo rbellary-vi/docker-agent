@@ -1,6 +1,11 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version 0.2.2 - Feb 26 2016
+---------------------------
+- add conf volume bind-mount to support using a local netuitive-agent.conf 
+- updated documentation
+
 Version 0.2.1 - Dec 3 2015
 ---------------------------
 - updated to the latest version of the agent
