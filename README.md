@@ -21,7 +21,7 @@ To enable new collectors, change hostname, reconfigure collectors etc.  You can 
 
 Run the agent with the following: 
 ```
-docker run -d --name netuitive-agent -v <local conf dir w/netuitive-agent.conf>:/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
+docker run -d --name netuitive-agent -v <local conf dir w/netuitive-agent.conf>:/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -e USE_LOCAL_CONFIG=true netuitive/docker-agent
 ```
 
 ## Configuration
