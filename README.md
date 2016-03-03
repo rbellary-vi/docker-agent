@@ -44,6 +44,7 @@ In order to configure other collectors you will need to pass a configuration fil
 
 `docker build --rm=true -t netuitive-agent .`
 
-Contribute
+### Using it
+See Netuitive Cloud help to create a datasource and obtain your APIKEY.  With this APIKEY you can send Docker host and container metrics to Netuitive for monitoring and analysis.  
 -----
-Notice something wrong or have an improvement to this container, feel free to open a [Github](https://github.com/Netuitive/docker-agent/issues) issue.
+More info: https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm 
