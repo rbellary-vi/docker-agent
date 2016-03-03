@@ -1,4 +1,4 @@
-# VERSION               0.2.1
+# VERSION               0.2.2
 # DESCRIPTION:    Netuitive-agent in a container
 # MAINTAINER Netuitive <repos@netuitive.com>
 
@@ -22,7 +22,8 @@ RUN  yum -y update \
   && find /var/log/ -type f -exec rm -f {} \; \
   && find /var/cache/ -type f -exec rm -f {} \;
 
-ADD netuitive-agent.conf /opt/netuitive-agent/conf/netuitive-agent.conf.tpl
+CMD mkdir /conf
+VOLUME ["/conf"]
 
 # startup script
 ADD entrypoint.sh /entrypoint.sh
