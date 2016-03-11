@@ -21,7 +21,7 @@ To enable new collectors, change hostname, reconfigure collectors etc.  You can 
 
 Run the agent with the following:
 ```
-docker run -d --name netuitive-agent -v <local conf dir w/netuitive-agent.conf>:/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -e USE_LOCAL_CONFIG=true netuitive/docker-agent
+docker run -d --name netuitive-agent -v <local conf dir w/netuitive-agent.conf>:/opt/netuitive-agent/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -e USE_LOCAL_CONFIG=true netuitive/docker-agent
 ```
 
 ## Configuration
@@ -35,6 +35,11 @@ The agent has support for the following environment variables.
 * `DOCKER_HOSTNAME` hostname of the docker host.  `-e DOCKER_HOSTNAME="my-docker-host"` would set the hostname to my-docker-host.
 * `APIKEY` api key used to send data to Netuitive. `-e APIKEY=myapikey` would set the apikey to myapikey.
 * `USE_LOCAL_CONFIG` is used to tell the agent to ignore any environment variables set and use a local config file.  See "Using Local Config" below. `-e USE_LOCAL_CONFIG=true` would enable this feature.
+* `LPRT` is used to tell the statsd agent what UDP port to listen on. (8125 by default)
+* `FORWARD`is used to enabled forwarding from the netuitive-statsd server to another statsd server.
+* `FIP` is used to tell the statsd agent what IP to forward to.
+* `FPRT` is used to tell the statsd agent what IP to forward to. (8125 by default)
+
 
 ### Adding Collectors
 In order to configure other collectors you will need to pass a configuration file with the updated configuration.  See "Using local config" above.
