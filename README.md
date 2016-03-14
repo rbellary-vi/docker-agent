@@ -3,9 +3,9 @@ This project creates a Docker container bundled with the [Netuitive-agent](https
 
 ## Quick-start
 
-### Creating your APIKEY in Netuitive Cloud
-See [Netuitive Cloud help](https://help.netuitive.com/Content/GettingStarted/Datasources/netuitive_integration_docker.htm?Highlight=docker) if needed.  Do the following to create a datasource and obtain your APIKEY:
-* Login to [Netuitive Cloud](https://app.netuitive.com)
+### Creating your APIKEY in Netuitive
+See [Netuitive help](https://help.netuitive.com/Content/GettingStarted/Datasources/netuitive_integration_docker.htm?Highlight=docker) if needed.  Do the following to create a datasource and obtain your APIKEY:
+* Login to [Netuitive](https://app.netuitive.com)
 * Click on Datasources in the user profile menu
 * Click Docker Datasource card and give it a name and click Generate.
 
@@ -14,6 +14,14 @@ The only necessary configuration is the hostname and your APIKEY.  You can run t
 ```
 docker run -d --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
 ```
+
+### Running the docker-agent with StatsD server
+The only necessary configuration is the hostname and your APIKEY.  You can run the agent with the following command:
+```
+docker run -d -p 8125:8125/udp --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
+```
+
+
 ### Using local config
 To enable new collectors, change hostname, reconfigure collectors etc.  You can pass a local config file to the docker-agent for this.  Do the following:
 * `mkdir <someplace to put netuitive-agent.conf in it>` create a directory to hold the netuitive-agent.conf file
@@ -50,6 +58,6 @@ In order to configure other collectors you will need to pass a configuration fil
 `docker build --rm=true -t netuitive-agent .`
 
 ### More Help
-See Netuitive Cloud help to create a datasource and obtain your APIKEY.  With this APIKEY you can send Docker host and container metrics to Netuitive for monitoring and analysis.
+See Netuitive help to create a datasource and obtain your APIKEY.  With this APIKEY you can send Docker host and container metrics to Netuitive for monitoring and analysis.
 
 More info: https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm
