@@ -1,63 +1,71 @@
-# Netuitive Docker Agent
-This project creates a Docker container bundled with the [Netuitive-agent](https://github.com/Netuitive/Diamond) and default Docker monitoring support.  It will automatically monitor your Docker host and containers.
+Netuitive Agent Docker Container
+=================================
 
-## Quick-start
+This project creates a Docker container bundled with the [Netuitive Linux Agent](https://github.com/Netuitive/omnibus-netuitive-agent) and default Docker monitoring support.  It will automatically monitor your Docker host and containers. 
 
-### Creating your APIKEY in Netuitive
-See [Netuitive help](https://help.netuitive.com/Content/GettingStarted/Datasources/netuitive_integration_docker.htm?Highlight=docker) if needed.  Do the following to create a datasource and obtain your APIKEY:
-* Login to [Netuitive](https://app.netuitive.com)
-* Click on Datasources in the user profile menu
-* Click Docker Datasource card and give it a name and click Generate.
+For more information on the Netuitive Linux Agent, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/new_netuitive_datasource.htm). For more information on the Netuitive Agent Docker Container, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm). For additional help, contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
 
-### Running the docker-agent
-The only necessary configuration is the hostname and your APIKEY.  You can run the agent with the following command:
-```
-docker run -d --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
-```
+Getting Started
+----------------
 
-### Running the docker-agent with StatsD server
-The only necessary configuration is the hostname and your APIKEY.  You can run the agent with the following command:
-```
-docker run -d -p 8125:8125/udp --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
-```
+You'll need a [Netuitive](https://signup.app.netuitive.com/signup) account to create the necessary datasource for interacting with the Netuitive Agent Docker Container. See the [Netuitive help](https://help.netuitive.com/Content/GettingStarted/Datasources/netuitive_integration_docker.htm?Highlight=docker) docs for the detailed setup steps. For a brief tutorial, follow along below.
 
+### Creating Your API Key in Netuitive
+Do the following to create a datasource and obtain your APIKEY:
 
-### Using local config
-To enable new collectors, change hostname, reconfigure collectors etc.  You can pass a local config file to the docker-agent for this.  Do the following:
-* `mkdir <someplace to put netuitive-agent.conf in it>` create a directory to hold the netuitive-agent.conf file
-* `cp netuitive-agent.conf <confdir you created>` copy the netuitive-agent.conf file from this project (assuming you checked it out)
+1. Login to [Netuitive](https://app.netuitive.com).
+1. Click Datasources in the user profile menu.
+1. Click the Docker card, give the datasource a name, and click Generate.
 
-Run the agent with the following:
-```
-docker run -d --name netuitive-agent -v <local conf dir w/netuitive-agent.conf>:/opt/netuitive-agent/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -e USE_LOCAL_CONFIG=true netuitive/docker-agent
-```
+### Running the Docker Agent
+The only necessary configuration is the hostname and your API key (generated in Netuitive).  You can run the agent with the following command:
+    
+    docker run -d --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
 
-## Configuration
+#### Running the Docker Agent with the Netuitive StatsD server
+Similar to the above command, but this command enables the Netuitive StatsD server that's packaged with the Netuitive Agent:
+
+    docker run -d -p 8125:8125/udp --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
+
+#### Using a Local Configuration File<a name="local-config-link"></a>
+You can pass a local configuration to the Docker agent to enable new collectors, change the Hostname, reconfigure collectors, and more. This uses a similar command to the above, but requires some minor setup first:
+
+1. Create a directory to hold the netuitive-agent.conf file.
+        
+        mkdir <someplace to put netuitive-agent.conf in it>
+        
+1. Copy the netuitive-agent.conf file from the project (assuming you've checked it out) to the directory you created in step 1.
+
+        cp netuitive-agent.conf <confdir you created in the first step>
+
+1. Run the agent with the following command:
+
+        docker run -d --name netuitive-agent -v <local conf dir with netuitive-agent.conf>:/opt/netuitive-agent/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -e USE_LOCAL_CONFIG=true netuitive/docker-agent
+    
+### Building the Docker Container
+
+    docker build --rm=true -t netuitive-agent .
+
+Configuration
+--------------
 
 ### Environment Variables
+The agent has support for the following environment variables:
 
-The agent has support for the following environment variables.
-
-* `LOGLEVEL` change the log level of the agent.  `-e LOGLEVEL=DEBUG` for example would set the agent to log at DEBUG level.
-* `INTERVAL` interval in seconds the agent collectors run.  `-e INTERVAL=120` for example would set them to 2min intervals.
-* `DOCKER_HOSTNAME` hostname of the docker host.  `-e DOCKER_HOSTNAME="my-docker-host"` would set the hostname to my-docker-host.
-* `APIKEY` api key used to send data to Netuitive. `-e APIKEY=myapikey` would set the apikey to myapikey.
-* `USE_LOCAL_CONFIG` is used to tell the agent to ignore any environment variables set and use a local config file.  See "Using Local Config" below. `-e USE_LOCAL_CONFIG=true` would enable this feature.
-* `LPRT` is used to tell the statsd agent what UDP port to listen on. (8125 by default)
-* `FORWARD`is used to enabled forwarding from the netuitive-statsd server to another statsd server.
-* `FIP` is used to tell the statsd agent what IP to forward to.
-* `FPRT` is used to tell the statsd agent what IP to forward to. (8125 by default)
-
+| Variable Name | Description | Example |
+|:---------------:|-------------|---------|
+| `LOGLEVEL` | Changes the log level of the agent. | `-e LOGLEVEL=DEBUG` would set the agent to log at the DEBUG level. |
+| `INTERVAL` | Interval (in seconds) in which the agent collectors run. | `-e INTERVAL=120` would set the interval to two minutes. |
+| `DOCKER_HOSTNAME` | Hostname of the docker host. | `-e DOCKER_HOSTNAME="my-docker-host"` would set the hostname to <i>my-docker-host</i>. |
+| `APIKEY` | The API key used to send data to Netuitive. | `e APIKEY=myapikey` would set the API key to <i>myapikey</i>. |
+| `USE_LOCAL_CONFIG` | Setting used to tell the agent to ignore any environment variables set and to use a local configuration file. See [Using a Local Configuration File](#local-config-link) above. | `-e USE_LOCAL_CONFIG-true` would enable this feature|
+| `LPRT` | Setting used to tell the Netuitive StatsD server what UDP port to listen on. The default is <i>8125</i>. | |
+| `FORWARD` | Setting used to enable forwarding from the Netuitive StatsD Server to another StatsD Server. | |
+| `FIP` | Setting used to tell the StatsD agent what IP to forward to. | |
+| `FPRT` | Setting used to tell the StatsD agent what port to forward to. The default is <i>8125</i>. | |
 
 ### Adding Collectors
-In order to configure other collectors you will need to pass a configuration file with the updated configuration.  See "Using local config" above.
+To configure other collectors, you will need to pass a configuration file with the updated configuration.  See [Using a Local Configuration File](#local-config-link) above.
 
 
-### Building it
 
-`docker build --rm=true -t netuitive-agent .`
-
-### More Help
-See Netuitive help to create a datasource and obtain your APIKEY.  With this APIKEY you can send Docker host and container metrics to Netuitive for monitoring and analysis.
-
-More info: https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm
