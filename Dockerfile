@@ -29,7 +29,6 @@ RUN  yum -y update \
 
 # startup script
 ADD entrypoint.sh /entrypoint.sh
-ADD netuitive-agent.conf /opt/netuitive-agent/conf/netuitive-agent.conf
 RUN chmod +x /entrypoint.sh
 
 VOLUME ["/opt/netuitive-agent/conf/"]
