@@ -37,6 +37,11 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 	sed -i -e "s/forward\ =\ False/forward\ =\ ${FORTWORD}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring FORWARD with $FORWARD"
 
+	if [ ! -z "$TAGS" ]; then
+		sed -i -e "s/# tags = tag1:tag1val, tag2:tag2val/tags =\ ${TAGS}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+		echo "Configuring TAGS with $TAGS"
+	fi
+
 fi
 
 
