@@ -1,4 +1,4 @@
-# VERSION               0.2.4
+# VERSION               0.2.7
 # DESCRIPTION:    Netuitive-agent in a container
 # MAINTAINER Netuitive <repos@netuitive.com>
 
@@ -24,6 +24,7 @@ RUN  yum -y update \
   && yum -y install netuitive-agent \
   && /sbin/chkconfig netuitive-agent off \
   && yum clean all \
+  && find /opt/netuitive-agent/collectors/ -type f -name "*.py" -print0 | xargs -0 sed -i 's/\/proc/\/host_proc/g' \
   && find /var/log/ -type f -exec rm -f {} \; \
   && find /var/cache/ -type f -exec rm -f {} \;
 
