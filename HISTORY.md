@@ -1,6 +1,9 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version 0.2.8
+---------------------------
+- add simple mode support for NetuitiveDockerCollector
 
 Version 0.2.7 - Dec 06 2016
 ---------------------------
