@@ -1,0 +1,25 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+script:
+  - docker build -t netuitive/docker-agent .;
+    cd testing;
+
+    ./test.sh;
+
+    for f in testserver.pass; do
+        [ -e "$f" ] && echo "artifact $f exists" || exit 1;
+        break;
+    done
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: chmod +x docker-deploy.sh && sh $TRAVIS_BUILD_DIR/docker-deploy.sh
+  on:
+    tags: true
+    repo: Netuitive/docker-agent
