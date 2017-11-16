@@ -19,7 +19,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod +x docker-deploy.sh && sh $TRAVIS_BUILD_DIR/docker-deploy.sh
+  script: chmod +x $TRAVIS_BUILD_DIR/docker-deploy.sh && sh $TRAVIS_BUILD_DIR/docker-deploy.sh
   on:
     tags: true
     repo: Netuitive/docker-agent
