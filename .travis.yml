@@ -16,6 +16,8 @@ script:
         break;
     done
 
+    cd ..;
+
 deploy:
   provider: script
   skip_cleanup: true
