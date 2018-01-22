@@ -1,6 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version 0.2.9
+---------------------------
+- clean poster elements at the end of its flush operation
+
 Version 0.2.8
 ---------------------------
 - add simple mode support for NetuitiveDockerCollector
