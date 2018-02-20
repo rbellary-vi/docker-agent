@@ -1,6 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version 0.2.10
+---------------------------
+- pull linux agent 0.6.3 for various bug fixes and performance improvements
+
 Version 0.2.9
 ---------------------------
 - clean poster elements at the end of its flush operation
