@@ -34,7 +34,7 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 	sed -i -e "s/forward_port\ =\ 8125/forward_port\ =\ ${FPRT}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring FORWARD_PORT with $FPRT"
 
-	sed -i -e "s/forward\ =\ False/forward\ =\ ${FORTWORD}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	sed -i -e "s/forward\ =\ False/forward\ =\ ${FORWARD}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring FORWARD with $FORWARD"
 
 	if [ ! -z "$TAGS" ]; then
