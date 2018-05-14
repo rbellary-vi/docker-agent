@@ -1,6 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version 0.2.11
+---------------------------
+- pull linux agent 0.6.6 for various bug fixes including a slow memory leak
+
 Version 0.2.10
 ---------------------------
 - pull linux agent 0.6.3 for various bug fixes and performance improvements
