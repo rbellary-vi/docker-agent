@@ -1,6 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version next
+---------------------------
+- Update netuitive-agent.conf to be in line with upstream defaults.
+
 Version 0.2.11
 ---------------------------
 - pull linux agent 0.6.6 for various bug fixes including a slow memory leak
