@@ -1,23 +1,13 @@
 sudo: required
-
 language: generic
-
 services:
-  - docker
-
+- docker
 script:
-  - docker build -t netuitive/docker-agent .;
-    cd testing;
-
-    ./test.sh;
-
-    for f in testserver.pass; do
-        [ -e "$f" ] && echo "artifact $f exists" || exit 1;
-        break;
-    done
-
-    cd ..;
-
+- |-
+  docker build -t netuitive/docker-agent .; cd testing;
+  ./test.sh;
+  for f in testserver.pass; do [ -e "$f" ] && echo "artifact $f exists" || exit 1; break; done
+  cd ..;
 deploy:
   provider: script
   skip_cleanup: true
@@ -25,3 +15,6 @@ deploy:
   on:
     tags: true
     repo: Netuitive/docker-agent
+notifications:
+  slack:
+    secure: zwlZY2nEPWSSZ5KnGefUV5bPuhlFfILTf64Qt+zgenULWdH04V4zKc8LTlyGtnanczYAjwtR4T/gT2+GVWkV9pku6Zwz7sxo2hc0u8gDiS+giHWCLTTKJB/LxCTSqi21AGbpuHqLfGMldwPzr9roZyjnTvcsWvk2fvO5io0oKoybxBUhZYdJ1zWi6nXRMDw+pPYp5DjUANf+Ko++/iYxqZiqPa/MmBsPZQbuM9m2ilJqsRU6PAj0Gtj+7MN7v10aDoVVBTxeWwCpd4/h8R4ii7IPqwcJR1qFE8MR3kYtocPyJ5PfcB3xu4i2/DyQlGWWWtt1IBjUqpNMPK5HyzyoLAxS+XMrsrkyy3y5w6dAjzqV2rp4tYYDlBPCpvGV7cbbG8n7XQSYh8H8aiECj9ZGvtHhc98tHTDZxtKz5q1xbyJ9iMSsB7e/r3GrehFBOWsL+xOAk2YpbowG/0OjKmYoSLaCpilidPmi3MCboz7tNbcDDZczs4DEhQX/CINBv1uIVtcHPsBxg+n/5bOkxeybFML79ox8g8hNnOaHHJjWjELwXeDPBWyGDuZ2hh0BLhXudycmgbqnmDvMWuxaBU9DWuug500p06vbh00EIVB2Ri5tqEoF3etaYMG9Rx3m4CFTZ6MPPjQ7jGS0NF7RbXzqXOratRszln/blQqnjYFFaL8=
