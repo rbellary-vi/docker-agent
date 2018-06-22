@@ -1,4 +1,4 @@
-# VERSION               0.2.11
+# VERSION               0.2.12
 # DESCRIPTION:    Netuitive-agent in a container
 # MAINTAINER Netuitive <repos@netuitive.com>
 

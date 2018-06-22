@@ -1,7 +1,7 @@
 Netuitive Docker Agent Release History
 ======================================
 
-Version next
+Version 0.2.12
 ---------------------------
 - Update netuitive-agent.conf to be in line with upstream defaults.
 - Add build notifications
