@@ -5,6 +5,7 @@ Version next
 ---------------------------
 - Update netuitive-agent.conf to be in line with upstream defaults.
 - Add build notifications
+- Update netuitive-agent to v0.6.7
 
 Version 0.2.11
 ---------------------------
