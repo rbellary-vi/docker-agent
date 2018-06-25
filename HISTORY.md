@@ -1,7 +1,7 @@
 Netuitive Docker Agent Release History
 ======================================
 
-Version 0.2.13
+Version next
 ---------------------------
 - Enable the BaseCollector by default.
 
