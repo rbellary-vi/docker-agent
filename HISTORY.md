@@ -1,5 +1,8 @@
 Netuitive Docker Agent Release History
 ======================================
+Version next
+----------------------------
+- Add minimal mode (off by default) option to the NetuitiveDockerCollector
 
 Version next
 ---------------------------
