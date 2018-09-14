@@ -4,10 +4,8 @@ Version next
 ----------------------------
 - Add a SimpleCollector config (off by default)
 - Add minimal mode (off by default) option to the NetuitiveDockerCollector
-
-Version next
----------------------------
-- Enable the BaseCollector by default.
+- Enable the BaseCollector by default
+- Update netuitive-agent to v0.7.2
 
 Version 0.2.12
 ---------------------------
