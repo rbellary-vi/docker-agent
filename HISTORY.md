@@ -1,6 +1,7 @@
 Netuitive Docker Agent Release History
 ======================================
-Version next
+
+Version 0.2.13
 ----------------------------
 - Add a SimpleCollector config (off by default)
 - Add minimal mode (off by default) option to the NetuitiveDockerCollector
