@@ -1,6 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
+Version next
+----------------------------
+- Update netuitive-agent to v0.7.3
+
 Version 0.2.13
 ----------------------------
 - Add a SimpleCollector config (off by default)
