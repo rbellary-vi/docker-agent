@@ -4,6 +4,11 @@ Netuitive Docker Agent Release History
 Version next
 ----------------------------
 
+Version 0.2.15
+----------------------------
+- Exclude device mapper virtual drives from DiskSpaceCollector by default
+- Update netuitive-agent to v0.7.4
+
 Version 0.2.14
 ----------------------------
 - Update netuitive-agent to v0.7.3
