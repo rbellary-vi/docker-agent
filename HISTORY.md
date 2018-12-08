@@ -1,7 +1,10 @@
 Netuitive Docker Agent Release History
 ======================================
 
-Version next
+Version next  
+----------------------------
+
+Version 0.2.16
 ----------------------------
 - Update netuitive-agent to v0.7.5
 - Add a default TCPCollector config
