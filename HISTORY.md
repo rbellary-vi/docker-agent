@@ -11,12 +11,7 @@ Version 0.2.17
 Version 0.2.16
 ----------------------------
 - Update netuitive-agent to v0.7.5
-- Add a default TCPCollector config
-- Add ConsulCollector.conf to project config
-- Add pkg concurrent-log-handler to fix locking, I/O errors when multiprocess logging to single file
 - Make ConcurrentRotatingFileHandler default log handler in netuitive-agent.conf
-- Add Docker Container Uptime feature to the NetuitiveDockerCollector
-- Add support for UDP to PortCheckCollector
 
 Version 0.2.15
 ----------------------------
