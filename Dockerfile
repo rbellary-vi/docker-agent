@@ -21,7 +21,7 @@ ENV TAGS ""
 RUN  yum -y update \
   && rpm --import https://repos.app.netuitive.com/RPM-GPG-KEY-netuitive \
   && rpm -ivh https://repos.app.netuitive.com/rpm/noarch/netuitive-repo-1-0.2.noarch.rpm \
-  && yum -y install netuitive-agent-0.7.6-188.el6 \
+  && yum -y install netuitive-agent-0.7.7-205.el6 \
   && /sbin/chkconfig netuitive-agent off \
   && yum clean all \
   && find /opt/netuitive-agent/collectors/ -type f -name "*.py" -print0 | xargs -0 sed -i 's/\/proc/\/host_proc/g' \
