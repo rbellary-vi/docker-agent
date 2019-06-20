@@ -3,6 +3,7 @@ Netuitive Docker Agent Release History
 
 Version next  
 ----------------------------
+- Enable Docker minimal mode collection by default
 
 Version 0.2.18  
 ----------------------------
