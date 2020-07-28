@@ -3,6 +3,7 @@ Netuitive Docker Agent Release History
 
 Version next  
 ----------------------------
+- Enable additional collectors by environment variables
 
 Version 0.2.21  
 ----------------------------

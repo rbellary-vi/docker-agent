@@ -67,3 +67,14 @@ The agent has support for the following environment variables:
 
 ### Adding Collectors
 To configure other collectors, you will need to pass a configuration file with the updated configuration.  See [Using a Local Configuration File](#local-config-link) above.
+
+Alternatively
+
+To configure collectors you can pass in the collector by environment variables. For example, ElasticSearchCollector.conf has the following keys available for configuration (enabled, logstash_mode, cluster, metrics_blacklist). To configure these keys you can pass in environment variables:
+
+    COLLECTOR_ELASTICSEARCH_ENABLED=True
+    COLLECTOR_ELASTICSEARCH_LOGSTASH__MODE="true"
+    COLLECTOR_ELASTICSEARCH_CLUSTER="true"
+    COLLECTOR_ELASTICSEARCH_METRICS__BLACKLIST="^indices\.(?!_all\.|datastore\.|docs\.).*"
+
+Note the double "_" in LOGSTASH__MODE and METRICS__BLACKLIST. Use the double "_" to have it remain in the key name (logstash_mode, metrics_blacklist)
