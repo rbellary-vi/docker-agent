@@ -77,4 +77,4 @@ To configure collectors you can pass in the collector by environment variables. 
     COLLECTOR_ELASTICSEARCH_CLUSTER="true"
     COLLECTOR_ELASTICSEARCH_METRICS__BLACKLIST="^indices\.(?!_all\.|datastore\.|docs\.).*"
 
-Note the double "_" in LOGSTASH__MODE and METRICS__BLACKLIST. Use the double "_" to have it remain in the key name (logstash_mode, metrics_blacklist)
+Note the double `_` in LOGSTASH__MODE and METRICS__BLACKLIST. Use the double `_` to have it remain in the key name (logstash_mode, metrics_blacklist)
