@@ -44,11 +44,6 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 		echo "Configuring URL: $APIURL"
 	fi
 
-	if [ ! "${STATSD_HOST}" ]; then
-		STATSD_HOST="localhost"
-	fi
-	sed -i -e "s/sensu\.app\.netuitive\.com/${STATSD_HOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
-
 	if [ ! -z "$TAGS" ]; then
 		sed -i -e "s/# tags = tag1:tag1val, tag2:tag2val/tags =\ ${TAGS}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 		echo "Configuring TAGS: $TAGS"
