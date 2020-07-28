@@ -18,7 +18,7 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 	sed -i -e "s/interval\ =\ 60/interval\ =\ ${INTERVAL}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring interval: $INTERVAL"
 
-        sed -i -e "s/api\.app\.netuitive\.com/${APIHOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	sed -i -e "s/api\.app\.netuitive\.com/${APIHOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring APIHOST: $APIHOST"
 
 	sed -i -e "s/# hostname\ =\ my_custom_hostname/hostname\ =\ ${DOCKER_HOSTNAME}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
@@ -42,25 +42,12 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
         if [ "${APIURL}" ]; then
           sed -i -e "s%url =.*%url = ${APIURL}%g" /opt/netuitive-agent/conf/netuitive-agent.conf
           echo "Configuring URL: $APIURL"
-        elif [ "${APIHOST}" ]; then
-     	  sed -i -e "s/api\.app\.netuitive\.com/${APIHOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
-    	  echo "Configuring APIHOST: $APIHOST"
-        else
-          echo "Need APIHOST or APIURL"
-          exit 1
         fi
 
         if [ ! "${STATSD_HOST}" ]; then
           STATSD_HOST="localhost"
         fi
         sed -i -e "s/sensu\.app\.netuitive\.com/${STATSD_HOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
-
-        if [ "${DOCKER_HOSTNAME}" = "docker-hostname" ]; then
-          DOCKER_HOSTNAME="`cat /etc/hostname | tr -dc .[:print:].`"
-        fi
-
- 	sed -i -e "s/# hostname\ =\ my_custom_hostname/hostname\ =\ ${DOCKER_HOSTNAME}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
-  	echo "Configuring HOSTNAME: $DOCKER_HOSTNAME"
 
 	if [ ! -z "$TAGS" ]; then
 		sed -i -e "s/# tags = tag1:tag1val, tag2:tag2val/tags =\ ${TAGS}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
