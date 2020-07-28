@@ -39,15 +39,15 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 	sed -i -e "s/forward\ =\ False/forward\ =\ ${FORWARD}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring FORWARD: $FORWARD"
 
-        if [ "${APIURL}" ]; then
-          sed -i -e "s%url =.*%url = ${APIURL}%g" /opt/netuitive-agent/conf/netuitive-agent.conf
-          echo "Configuring URL: $APIURL"
-        fi
+	if [ "${APIURL}" ]; then
+		sed -i -e "s%url =.*%url = ${APIURL}%g" /opt/netuitive-agent/conf/netuitive-agent.conf
+		echo "Configuring URL: $APIURL"
+	fi
 
-        if [ ! "${STATSD_HOST}" ]; then
-          STATSD_HOST="localhost"
-        fi
-        sed -i -e "s/sensu\.app\.netuitive\.com/${STATSD_HOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	if [ ! "${STATSD_HOST}" ]; then
+		STATSD_HOST="localhost"
+	fi
+	sed -i -e "s/sensu\.app\.netuitive\.com/${STATSD_HOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 
 	if [ ! -z "$TAGS" ]; then
 		sed -i -e "s/# tags = tag1:tag1val, tag2:tag2val/tags =\ ${TAGS}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
@@ -57,19 +57,19 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 fi
 
 for v in `set -o posix; set | sed 's% %:#:%g'`; do
-  if [[ "${v}" == "COLLECTOR_"*  ]]; then
+	if [[ "${v}" == "COLLECTOR_"*  ]]; then
 
-    FILE=`echo "${COLLECTORS}" | grep -i "$(echo "${v}" | sed 's%^COLLECTOR_%%;s%_.*%%' | tr 'A-Z' 'a-z')"`
-    KEY=`echo "${v}" | sed 's%=.*%%;s%__%##%g;s%.*_%%;s%##%_%g' | tr 'A-Z' 'a-z'`
-    VAL=`echo "${v}" | sed "s%.*=%%;s%[']%%g"`
+		FILE=`echo "${COLLECTORS}" | grep -i "$(echo "${v}" | sed 's%^COLLECTOR_%%;s%_.*%%' | tr 'A-Z' 'a-z')"`
+		KEY=`echo "${v}" | sed 's%=.*%%;s%__%##%g;s%.*_%%;s%##%_%g' | tr 'A-Z' 'a-z'`
+		VAL=`echo "${v}" | sed "s%.*=%%;s%[']%%g"`
 
-    [ "${VAL}" == "true" ] && VAL=True
-    [ "${VAL}" == "false" ] && VAL=False
+		[ "${VAL}" == "true" ] && VAL=True
+		[ "${VAL}" == "false" ] && VAL=False
 
-    echo "Configuring ${FILE} collector ${KEY}: ${VAL}"
-    sed -i "s%^${KEY}.*%${KEY} = ${VAL}%" /opt/netuitive-agent/conf/collectors/${FILE}Collector.conf
+		echo "Configuring ${FILE} collector ${KEY}: ${VAL}"
+		sed -i "s%^${KEY}.*%${KEY} = ${VAL}%" /opt/netuitive-agent/conf/collectors/${FILE}Collector.conf
 
-  fi
+	fi
 done
 
 ln -sf /proc/1/fd/1 /opt/netuitive-agent/log/netuitive-agent.log
