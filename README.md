@@ -58,12 +58,27 @@ The agent has support for the following environment variables:
 | `INTERVAL` | Interval (in seconds) in which the agent collectors run. | `-e INTERVAL=120` would set the interval to two minutes. |
 | `DOCKER_HOSTNAME` | Hostname of the docker host. | `-e DOCKER_HOSTNAME="my-docker-host"` would set the hostname to <i>my-docker-host</i>. |
 | `APIKEY` | The API key used to send data to Netuitive. | `e APIKEY=myapikey` would set the API key to <i>myapikey</i>. |
-| `USE_LOCAL_CONFIG` | Setting used to tell the agent to ignore any environment variables set and to use a local configuration file. See [Using a Local Configuration File](#local-config-link) above. | `-e USE_LOCAL_CONFIG-true` would enable this feature|
+| `USE_LOCAL_CONFIG` | Setting used to tell the agent to ignore any environment variables set and to use a local configuration file. See [Using a Local Configuration File](#local-config-link) above. | `-e USE_LOCAL_CONFIG=true` would enable this feature|
 | `LPRT` | Setting used to tell the Netuitive StatsD server what UDP port to listen on. The default is <i>8125</i>. | |
 | `FORWARD` | Setting used to enable forwarding from the Netuitive StatsD Server to another StatsD Server. | |
 | `FIP` | Setting used to tell the StatsD agent what IP to forward to. | |
 | `FPRT` | Setting used to tell the StatsD agent what port to forward to. The default is <i>8125</i>. | |
 | `TAGS` | Add a comma delimited list of tags to add to the agent. Tags should be of the form <b>key:value</b> (e.g. <b>key1:value1, key2:value2</b>). The default is no tags. | |
+| `HTTPVAR` | Sets the protocol | http or https |
+| `APIHOST` | The API hostname to send metrics to. Default: api.app.netuitive.com | |
+| `APIURL` | Sets the full API url. If povided it will override the HTTPVAR and APIHOST variables | https://api.app.netuitive.com/ingest/infrastructure |
+| `LIP` | Sets the listening IP. Default: 0.0.0.0 | |
 
 ### Adding Collectors
 To configure other collectors, you will need to pass a configuration file with the updated configuration.  See [Using a Local Configuration File](#local-config-link) above.
+
+Alternatively
+
+To configure collectors you can pass in the collector by environment variables. For example, ElasticSearchCollector.conf has the following keys available for configuration (enabled, logstash_mode, cluster, metrics_blacklist). To configure these keys you can pass in environment variables:
+
+    COLLECTOR_ELASTICSEARCH_ENABLED=True
+    COLLECTOR_ELASTICSEARCH_LOGSTASH__MODE="true"
+    COLLECTOR_ELASTICSEARCH_CLUSTER="true"
+    COLLECTOR_ELASTICSEARCH_METRICS__BLACKLIST="^indices\.(?!_all\.|datastore\.|docs\.).*"
+
+Note the double `_` in LOGSTASH__MODE and METRICS__BLACKLIST. Use the double `_` to have it remain in the key name (logstash_mode, metrics_blacklist)
