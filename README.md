@@ -64,6 +64,10 @@ The agent has support for the following environment variables:
 | `FIP` | Setting used to tell the StatsD agent what IP to forward to. | |
 | `FPRT` | Setting used to tell the StatsD agent what port to forward to. The default is <i>8125</i>. | |
 | `TAGS` | Add a comma delimited list of tags to add to the agent. Tags should be of the form <b>key:value</b> (e.g. <b>key1:value1, key2:value2</b>). The default is no tags. | |
+| `HTTPVAR` | Sets the protocol | http or https |
+| `APIHOST` | The API hostname to send metrics to. Default: api.app.netuitive.com | |
+| `APIURL` | Sets the full API url. If povided it will override the HTTPVAR and APIHOST variables | https://api.app.netuitive.com/ingest/infrastructure |
+| `LIP` | Sets the listening IP. Default: 0.0.0.0 | |
 
 ### Adding Collectors
 To configure other collectors, you will need to pass a configuration file with the updated configuration.  See [Using a Local Configuration File](#local-config-link) above.
