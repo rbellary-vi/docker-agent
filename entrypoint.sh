@@ -18,6 +18,27 @@ if [[ ! $USE_LOCAL_CONFIG ]]; then
 	sed -i -e "s/interval\ =\ 60/interval\ =\ ${INTERVAL}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
 	echo "Configuring interval: $INTERVAL"
 
+        sed -i -e "s/api\.app\.netuitive\.com/${APIHOST}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring APIHOST: $APIHOST"
+
+	sed -i -e "s/# hostname\ =\ my_custom_hostname/hostname\ =\ ${DOCKER_HOSTNAME}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring HOSTNAME: $DOCKER_HOSTNAME"
+
+	sed -i -e "s/listen_ip\ =\ 0.0.0.0/listen_ip\ =\ ${LIP}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring LISTEN_IP: $LIP"
+
+	sed -i -e "s/listen_port\ =\ 8125/listen_port\ =\ ${LPRT}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring LISTEN_PORT: $LPRT"
+
+	sed -i -e "s/forward_ip\ =\ 0.0.0.0/forward_ip\ =\ ${FIP}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring FORWARD_IP: $FIP"
+
+	sed -i -e "s/forward_port\ =\ 8125/forward_port\ =\ ${FPRT}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring FORWARD_PORT: $FPRT"
+
+	sed -i -e "s/forward\ =\ False/forward\ =\ ${FORWARD}/g" /opt/netuitive-agent/conf/netuitive-agent.conf
+	echo "Configuring FORWARD: $FORWARD"
+
         if [ "${APIURL}" ]; then
           sed -i -e "s%url =.*%url = ${APIURL}%g" /opt/netuitive-agent/conf/netuitive-agent.conf
           echo "Configuring URL: $APIURL"
