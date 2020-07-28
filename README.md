@@ -58,7 +58,7 @@ The agent has support for the following environment variables:
 | `INTERVAL` | Interval (in seconds) in which the agent collectors run. | `-e INTERVAL=120` would set the interval to two minutes. |
 | `DOCKER_HOSTNAME` | Hostname of the docker host. | `-e DOCKER_HOSTNAME="my-docker-host"` would set the hostname to <i>my-docker-host</i>. |
 | `APIKEY` | The API key used to send data to Netuitive. | `e APIKEY=myapikey` would set the API key to <i>myapikey</i>. |
-| `USE_LOCAL_CONFIG` | Setting used to tell the agent to ignore any environment variables set and to use a local configuration file. See [Using a Local Configuration File](#local-config-link) above. | `-e USE_LOCAL_CONFIG-true` would enable this feature|
+| `USE_LOCAL_CONFIG` | Setting used to tell the agent to ignore any environment variables set and to use a local configuration file. See [Using a Local Configuration File](#local-config-link) above. | `-e USE_LOCAL_CONFIG=true` would enable this feature|
 | `LPRT` | Setting used to tell the Netuitive StatsD server what UDP port to listen on. The default is <i>8125</i>. | |
 | `FORWARD` | Setting used to enable forwarding from the Netuitive StatsD Server to another StatsD Server. | |
 | `FIP` | Setting used to tell the StatsD agent what IP to forward to. | |
