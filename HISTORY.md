@@ -4,6 +4,11 @@ Netuitive Docker Agent Release History
 Version next  
 ----------------------------
 
+Version 0.2.22  
+----------------------------
+- Enable additional collectors by environment variables
+- Update netuitive-agent to v0.8.0
+
 Version 0.2.21  
 ----------------------------
 - Update netuitive-agent to v0.7.9
