@@ -5,7 +5,7 @@ This project creates a Docker container bundled with the [Netuitive Linux Agent]
 
 For more information on the Netuitive Linux Agent, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/new_netuitive_datasource.htm). For more information on the Netuitive Agent Docker Container, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm). For additional help, contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
 
-Note that in this repository whenever you see python it will be assumed that it is Python 2.7.
+Note that all references in this repository to Python are for Python 2.7.
 
 Getting Started
 ----------------
