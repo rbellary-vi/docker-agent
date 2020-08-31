@@ -1,9 +1,11 @@
 Netuitive Agent Docker Container
 =================================
 
-This project creates a Docker container bundled with the [Netuitive Linux Agent](https://github.com/Netuitive/omnibus-netuitive-agent) and default Docker monitoring support.  It will automatically monitor your Docker host and containers. 
+This project creates a Docker container bundled with the [Netuitive Linux Agent](https://github.com/Netuitive/omnibus-netuitive-agent) and default Docker monitoring support.  It will automatically monitor your Docker host and containers.
 
 For more information on the Netuitive Linux Agent, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/new_netuitive_datasource.htm). For more information on the Netuitive Agent Docker Container, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm). For additional help, contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
+
+Note that all references in this repository to Python are for Python 2.7.
 
 Getting Started
 ----------------
@@ -19,7 +21,7 @@ Do the following to create a datasource and obtain your APIKEY:
 
 ### Running the Docker Agent
 The only necessary configuration is the hostname and your API key (generated in Netuitive).  You can run the agent with the following command:
-    
+
     docker run -d --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
 
 #### Running the Docker Agent with the Netuitive StatsD server
@@ -31,9 +33,9 @@ Similar to the above command, but this command enables the Netuitive StatsD serv
 You can pass a local configuration to the Docker agent to enable new collectors, change the Hostname, reconfigure collectors, and more. This uses a similar command to the above, but requires some minor setup first:
 
 1. Create a directory to hold the netuitive-agent.conf file.
-        
+
         mkdir <someplace to put netuitive-agent.conf in it>
-        
+
 1. Copy the netuitive-agent.conf file from the project (assuming you've checked it out) to the directory you created in step 1.
 
         cp netuitive-agent.conf <confdir you created in the first step>
@@ -41,7 +43,7 @@ You can pass a local configuration to the Docker agent to enable new collectors,
 1. Run the agent with the following command:
 
         docker run -d --name netuitive-agent -v <local conf dir with netuitive-agent.conf>:/opt/netuitive-agent/conf -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro -e USE_LOCAL_CONFIG=true netuitive/docker-agent
-    
+
 ### Building the Docker Container
 
     docker build --rm=true -t netuitive-agent .
