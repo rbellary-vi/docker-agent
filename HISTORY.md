@@ -3,6 +3,7 @@ Netuitive Docker Agent Release History
 
 Version next  
 ----------------------------
+- updated documentation
 
 Version 0.2.22  
 ----------------------------
