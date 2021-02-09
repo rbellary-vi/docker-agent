@@ -3,19 +3,19 @@ Netuitive Agent Docker Container
 
 This project creates a Docker container bundled with the [Netuitive Linux Agent](https://github.com/Netuitive/omnibus-netuitive-agent) and default Docker monitoring support.  It will automatically monitor your Docker host and containers.
 
-For more information on the Netuitive Linux Agent, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/new_netuitive_datasource.htm). For more information on the Netuitive Agent Docker Container, go [here](https://help.netuitive.com/Content/Misc/Datasources/Netuitive/integrations/new_netuitive_datasource_via_docker.htm). For additional help, contact Netuitive support at [support@netuitive.com](mailto:support@netuitive.com).
+For more information on the Netuitive Linux Agent, go [here](https://docs.virtana.com/en/linux-agent.html). For more information on the Netuitive Agent Docker Container, go [here](https://docs.virtana.com/en/docker-install.html). For additional help, contact Netuitive support at [cloudwisdom.support@virtana.com](mailto:cloudwisdom.support@virtana.com).
 
 Note that all references in this repository to Python are for Python 2.7.
 
 Getting Started
 ----------------
 
-You'll need a [Netuitive](https://signup.app.netuitive.com/signup) account to create the necessary datasource for interacting with the Netuitive Agent Docker Container. See the [Netuitive help](https://help.netuitive.com/Content/GettingStarted/Datasources/netuitive_integration_docker.htm?Highlight=docker) docs for the detailed setup steps. For a brief tutorial, follow along below.
+You'll need a [Virtana](https://try.cloudwisdom.virtana.com/) account to create the necessary datasource for interacting with the Netuitive Agent Docker Container. See the [Virtana help](https://docs.virtana.com/en/docker.html) docs for the detailed setup steps. For a brief tutorial, follow along below.
 
 ### Creating Your API Key in Netuitive
 Do the following to create a datasource and obtain your APIKEY:
 
-1. Login to [Netuitive](https://app.netuitive.com).
+1. Login to [Virtana](https://try.cloudwisdom.virtana.com/).
 1. Click Datasources in the user profile menu.
 1. Click the Docker card, give the datasource a name, and click Generate.
 
