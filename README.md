@@ -1,31 +1,31 @@
-Netuitive Agent Docker Container
+CloudWisdom Agent Docker Container
 =================================
 
-This project creates a Docker container bundled with the [Netuitive Linux Agent](https://github.com/Netuitive/omnibus-netuitive-agent) and default Docker monitoring support.  It will automatically monitor your Docker host and containers.
+This project creates a Docker container bundled with the [CloudWisdom Linux Agent](https://github.com/Netuitive/omnibus-netuitive-agent) and default Docker monitoring support.  It will automatically monitor your Docker host and containers.
 
-For more information on the Netuitive Linux Agent, go [here](https://docs.virtana.com/en/linux-agent.html). For more information on the Netuitive Agent Docker Container, go [here](https://docs.virtana.com/en/docker-install.html). For additional help, contact Netuitive support at [cloudwisdom.support@virtana.com](mailto:cloudwisdom.support@virtana.com).
+For more information on the CloudWisdom Linux Agent, go [here](https://docs.virtana.com/en/linux-agent.html). For more information on the CloudWisdom Agent Docker Container, go [here](https://docs.virtana.com/en/docker-install.html). For additional help, contact CloudWisdom support at [cloudwisdom.support@virtana.com](mailto:cloudwisdom.support@virtana.com).
 
 Note that all references in this repository to Python are for Python 2.7.
 
 Getting Started
 ----------------
 
-You'll need a [Virtana](https://try.cloudwisdom.virtana.com/) account to create the necessary datasource for interacting with the Netuitive Agent Docker Container. See the [Virtana help](https://docs.virtana.com/en/docker.html) docs for the detailed setup steps. For a brief tutorial, follow along below.
+You'll need a [CloudWisdom](https://try.cloudwisdom.virtana.com/) account to create the necessary datasource for interacting with the CloudWisdom Agent Docker Container. See the [CloudWisdom help](https://docs.virtana.com/en/docker.html) docs for the detailed setup steps. For a brief tutorial, follow along below.
 
-### Creating Your API Key in Netuitive
+### Creating Your API Key in CloudWisdom
 Do the following to create a datasource and obtain your APIKEY:
 
-1. Login to [Virtana](https://try.cloudwisdom.virtana.com/).
+1. Login to [CloudWisdom](https://try.cloudwisdom.virtana.com/).
 1. Click Datasources in the user profile menu.
 1. Click the Docker card, give the datasource a name, and click Generate.
 
 ### Running the Docker Agent
-The only necessary configuration is the hostname and your API key (generated in Netuitive).  You can run the agent with the following command:
+The only necessary configuration is the hostname and your API key (generated in CloudWisdom).  You can run the agent with the following command:
 
     docker run -d --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
 
-#### Running the Docker Agent with the Netuitive StatsD server
-Similar to the above command, but this command enables the Netuitive StatsD server that's packaged with the Netuitive Agent:
+#### Running the Docker Agent with the CloudWisdom StatsD server
+Similar to the above command, but this command enables the CloudWisdom StatsD server that's packaged with the CloudWisdom Agent:
 
     docker run -d -p 8125:8125/udp --name netuitive-agent -e DOCKER_HOSTNAME="my-docker-host" -e APIKEY="my-api-key" -v /proc:/host_proc:ro -v /var/run/docker.sock:/var/run/docker.sock:ro netuitive/docker-agent
 
